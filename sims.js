@@ -368,7 +368,7 @@ SIMS.engranaje=el=>build(el,{w:660,h:430,
   a.line(P[0]-L*Math.cos(al),P[1]+L*Math.sin(al),P[0]+L*Math.cos(al),P[1]-L*Math.sin(al),C.f,2);
   a.txt('línea de acción ('+NQ(a.st.al)+'°)',P[0]+L*Math.cos(al)+6,P[1]-L*Math.sin(al)-4,C.f,11);
   a.line(c1[0],c1[1],c2[0],c2[1],C.muted,1.2,[5,4]);
-  a.txt('C = '+NQ(C0)+' mm',(c1[0]+c2[0])/2,c1[1]+40,C.muted,11,'center');
+  a.txt('C = '+NQ(C0)+' mm',(c1[0]+c2[0])/2,c1[1]-10,C.muted,11,'center');
   a.txt('r_p',c1[0],c1[1]-rp1*S-6,C.a,11,'center');
   a.txt('r_b',c1[0]-rb1*S*0.72,c1[1]+rb1*S*0.72,C.muted,10,'right');
   // panel
