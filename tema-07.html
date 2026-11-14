@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T7 Ejes, acoplamientos y apoyos · Mecánica de Máquinas · Guía para aprobar</title>
+<meta name="description" content="Mecánica de Máquinas (UPCT, GIEyA): tema 7, Ejes, acoplamientos y apoyos">
+<meta name="theme-color" content="#8c4a23">
+<link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="stylesheet" href="style.css">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="hub-bar" style="max-width:1180px;margin:0 auto;padding:10px 16px 0"><a href="https://helionacon-ui.github.io/GIEIA-UPCT/" style="display:inline-flex;align-items:center;gap:6px;font:600 13.5px/1 system-ui,sans-serif;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);text-decoration:none">← Todas las guías GIEyA</a><p class="fecha" style="margin:6px 0 0;max-width:none;font:13px/1.45 system-ui,sans-serif;color:var(--muted)">Datos tomados del curso <time datetime="2022-09">2022/23</time> (guiones de teoría, prácticas y exámenes de 2021 a 2023) · página creada en noviembre de 2026</p></div>
+<div class="crumb"><a href="index.html">Mecánica de Máquinas</a><span class="sep">›</span><span>Sistemas mecánicos</span><span class="sep">›</span><span>T7 · Ejes, acoplamientos y apoyos</span></div><a href="#top" class="totop" id="totop" aria-label="Volver arriba">↑</a>
+<div class="wrap" id="top">
+<nav aria-label="Índice" class="toc"><a href="index.html" style="--tc:var(--c0)">Portada</a><div class="grp">Empezar</div><a href="index.html#cero" style="--tc:var(--c0)">Empieza aquí desde cero</a><a href="plan.html" style="--tc:var(--c0)">Cómo es la evaluación</a><a href="index.html#progreso" style="--tc:var(--c0)">Tu progreso</a><div class="grp">Fundamentos</div><a href="tema-01.html" style="--tc:var(--c2)">T1 Teoría de mecanismos y grados de libertad</a><a href="tema-02.html" style="--tc:var(--c3)">T2 Análisis cinemático de mecanismos planos</a><a href="tema-03.html" style="--tc:var(--c4)">T3 Análisis dinámico, fuerzas vivas y volante de inercia</a><a href="tema-04.html" style="--tc:var(--c5)">T4 Vibraciones en sistemas mecánicos</a><div class="grp">Sistemas mecánicos</div><a href="tema-05.html" style="--tc:var(--c6)">T5 Transmisiones por engranajes y trenes</a><a href="tema-06.html" style="--tc:var(--c7)">T6 Transmisiones por correa y cadena</a><a href="tema-07.html" style="--tc:var(--c8)" class="on" aria-current="page">T7 Ejes, acoplamientos y apoyos</a><a href="tema-08.html" style="--tc:var(--c1)">T8 Sistemas leva-seguidor</a><div class="grp">Practicar</div><a href="cuestiones.html" style="--tc:var(--c8)">Cuestiones de teoría respondidas</a><a href="examenes.html" style="--tc:var(--c8)">Problemas tipo resueltos</a><a href="problemas.html" style="--tc:var(--c8)">Los boletines oficiales</a><a href="laboratorio.html" style="--tc:var(--c7)">Prácticas y evaluación</a><a href="formulario.html" style="--tc:var(--c8)">Formulario</a></nav>
+<main>
+<section class="sec tema" style="--tc:var(--c8);--tcs:var(--c8s)">
+<div class="sh"><span aria-hidden="true" class="badge">7</span><div class="shx"><p class="kick">Sistemas mecánicos · Tema 7</p><h2 id="t7">Ejes, acoplamientos y apoyos</h2><div class="tags"><span class="tag">Sistemas mecánicos</span><span class="tag">2.º parcial</span></div></div></div>
+<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> Determinar las fuerzas que los elementos de transmisión introducen en un eje, calcular las reacciones en los apoyos y conocer los tipos de acoplamientos y rodamientos.</p><p>Los <b>ejes</b> llevan la potencia de la máquina motriz a la conducida a través de los elementos de transmisión; los <b>acoplamientos</b> unen dos ejes (y permiten desconectarlos); los <b>apoyos</b> (cojinetes y rodamientos) los soportan sobre la bancada y transmiten a ella las fuerzas.</p>
+<p>El problema típico es: un eje con una polea y un engranaje montados, apoyado en dos rodamientos. Se pide el <b>diagrama de fuerzas</b> y las <b>reacciones</b>. La clave es que cada elemento introduce fuerzas conocidas a partir del par transmitido \(T=H/\omega\):</p>
+<ul><li><b>Engranaje recto</b>: \(F_t=T/r_p\) y \(F_r=F_t\tan\alpha\) (sin componente axial).</li>
+<li><b>Engranaje helicoidal</b>: además \(F_a=F_t\tan\beta\), que hay que absorber con un rodamiento capaz de carga axial.</li>
+<li><b>Polea</b>: las dos fuerzas de los ramales, \(F_A+F_B\) (suman, no restan: la resultante sobre el eje es la suma vectorial, mientras que el par lo da la diferencia).</li></ul>
+<p>Con esas fuerzas se plantea el equilibrio estático del eje en <b>dos planos perpendiculares</b> (vertical y horizontal) y se obtienen las reacciones; después se componen vectorialmente.</p>
+<p><b>Acoplamientos</b>: <b>rígidos</b> (exigen alineación perfecta), <b>flexibles</b> (admiten desalineaciones y amortiguan choques), <b>móviles</b> (juntas cardán, homocinéticas) y <b>embragues</b> (permiten conectar y desconectar en marcha).</p>
+<p><b>Apoyos</b>: <b>cojinetes de fricción</b> (deslizamiento, película de lubricante) y <b>rodamientos</b> (bolas o rodillos). Según la carga que admiten: radiales, axiales o de contacto angular (ambas). En un rodamiento, la jaula gira a una velocidad intermedia entre las pistas, y ésa es la relación cinemática que suele preguntarse.</p></div>
+<details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 7 <span class="src">8 símbolos</span></summary><div class="inner">
+<div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">T</td><td>H/ω</td><td class="u">par en el eje</td></tr><tr><td class="sym">F_t</td><td>T/r_p</td><td class="u">tangencial</td></tr><tr><td class="sym">F_r</td><td>F_t·tan α</td><td class="u">radial</td></tr><tr><td class="sym">F_a</td><td>F_t·tan β</td><td class="u">axial (helicoidal)</td></tr><tr><td class="sym">R_A, R_B</td><td>Reacciones en los apoyos</td><td class="u">N</td></tr><tr><td class="sym">acoplamiento</td><td>Une dos ejes</td><td class="u">rígido / flexible</td></tr><tr><td class="sym">cojinete</td><td>Apoyo por deslizamiento</td><td class="u"></td></tr><tr><td class="sym">rodamiento</td><td>Apoyo por rodadura</td><td class="u">bolas o rodillos</td></tr></table></div></div></details>
+<figure class="fig"><p class="ft">Figura interactiva - fuerzas sobre el eje y reacciones en los apoyos</p><div data-sim="ejes"></div><figcaption>Mueve los controles y lee el recuadro: la figura calcula lo mismo que tú harías a mano en el examen.</figcaption></figure>
+<h3 id="t7-formulas">Lo que tienes que saber</h3>
+<div class="box key"><ul>
+<li>Par en el eje: \(T=\dfrac{H}{\omega}\), con \(\omega=\dfrac{2\pi n}{60}\).</li>
+<li>Engranaje: \(F_t=\dfrac{T}{r_p}\), \(F_r=F_t\tan\alpha\), \(F_a=F_t\tan\beta\) (helicoidal).</li>
+<li>Polea: par \(M=(F_A-F_B)\dfrac{d}{2}\); carga sobre el eje \(\approx F_A+F_B\) en la dirección de los ramales.</li>
+<li>Equilibrio del eje: \(\sum F=0\) y \(\sum M=0\) en los planos vertical y horizontal; \(R=\sqrt{R_V^2+R_H^2}\).</li>
+<li>Rodamiento con pista exterior fija: \(\omega_{jaula}=\omega_{eje}\dfrac{r_{int}}{r_{int}+r_{ext}}\); los elementos rodantes giran sobre sí mismos con \(\omega_{el}=\omega_{eje}\dfrac{r_{int}}{d_{el}}\) aproximadamente.</li>
+<li>Momento flector máximo y par combinado son la base del dimensionado a fatiga (se ve en Diseño de Máquinas).</li></ul></div>
+<h3 id="t7-metodo">Cómo se resuelve</h3>
+<ol class="steps"><li>Calcula el <b>par</b> en el eje a partir de la potencia y la velocidad.</li><li>Obtén las <b>fuerzas de cada elemento</b> (engranaje, polea) con su dirección y su punto de aplicación.</li><li>Dibuja el eje como una viga con sus apoyos y descompón las fuerzas en los planos <b>vertical</b> y <b>horizontal</b>.</li><li>Plantea el equilibrio en cada plano y obtén las reacciones; compón después \(R=\sqrt{R_V^2+R_H^2}\).</li><li>Comprueba la <b>carga axial</b>: si existe, indica qué rodamiento la absorbe (sólo uno debe fijar axialmente el eje).</li></ol>
+<div class="box trap"><h4>Trampas típicas</h4><ul><li>Sumar los ramales de la correa para calcular el <b>par</b> (es la diferencia) o restarlos para calcular la <b>carga sobre el eje</b> (es la suma).</li><li>Olvidar la componente <b>axial</b> de un engranaje helicoidal y, con ella, el rodamiento que debe absorberla.</li><li>Trabajar en un solo plano cuando las fuerzas están en planos distintos.</li><li>Fijar axialmente el eje en los <b>dos</b> apoyos: con la dilatación térmica, el eje se agarrota.</li></ul></div>
+<h3 id="t7-problema">Problema tipo</h3>
+<div class="prob"><div class="enun"><p class="et">Enunciado</p><p>Un eje gira a 1 000 rpm y transmite 2,94 kW. Lleva calado un engranaje recto de \(z=35\) y \(m=2{,}5\) mm (α = 20°) en el extremo derecho, a 100 mm del apoyo B, y una polea en el centro, a 150 mm de cada apoyo, con \(F_A=1\,643\) N y \(F_B=1\,081\) N en dirección vertical. Calcular las fuerzas del engranaje y las reacciones en los apoyos en el plano de la polea.</p></div>
+<details class="paso"><summary><span class="pn">✓</span>Ver solución paso a paso</summary><div class="inner"><p><b>Par en el eje</b>: \(\omega=\dfrac{2\pi\cdot1000}{60}=104{,}72\) rad/s ⇒ \(T=\dfrac{2940}{104{,}72}=28{,}1\) N·m.</p>
+<p><b>Fuerzas del engranaje</b> (\(r_p=mz/2=43{,}75\) mm):</p>
+<p>\(F_t=\dfrac{28{,}1}{0{,}04375}=\mathbf{642\ N}\), \(F_r=642\tan20^\circ=\mathbf{234\ N}\), sin componente axial por ser recto.</p>
+<p><b>Carga de la polea sobre el eje</b>: los dos ramales <b>tiran en el mismo sentido</b>, así que la fuerza que soporta el eje es</p>
+<p>\(F_{polea}=F_A+F_B=1643+1081=\mathbf{2\,724\ N}\)</p>
+<p>(mientras que el par lo produce la <b>diferencia</b>, 562 N; es el error más repetido del tema).</p>
+<p><b>Reacciones</b> en el plano vertical, tomando momentos en A (apoyos separados 300 mm, polea en el centro):</p>
+<p>\(R_B\cdot0{,}3=2724\cdot0{,}15\ \Rightarrow\ R_B=\mathbf{1\,362\ N}\), y por simetría \(R_A=\mathbf{1\,362\ N}\).</p>
+<p>Si además se considera la fuerza radial del engranaje, situado en voladizo a 100 mm por fuera de B, hay que añadir su contribución con el signo correspondiente: el voladizo <b>descarga</b> A y <b>recarga</b> B. Para la fuerza total en cada apoyo se compone después con las reacciones del plano horizontal: \(R=\sqrt{R_V^2+R_H^2}\).</p></div></details></div>
+<h3 id="t7-auto">Autoevaluación</h3>
+<p class="muted">Responde antes de desplegar.</p><details class="paso"><summary><span class="pn">1</span>¿Qué fuerza soporta un eje por efecto de una correa: la suma o la diferencia de los ramales?</summary><div class="inner"><p>La <b>suma</b>, porque los dos ramales tiran del eje en el mismo sentido. La <b>diferencia</b> es la que produce el par.</p></div></details><details class="paso"><summary><span class="pn">2</span>¿Qué fuerzas introduce un engranaje helicoidal?</summary><div class="inner"><p>Tangencial \(F_t=T/r_p\), radial \(F_r=F_t\tan\alpha\) y <b>axial</b> \(F_a=F_t\tan\beta\). Esta última obliga a usar un rodamiento capaz de absorber carga axial.</p></div></details><details class="paso"><summary><span class="pn">3</span>¿Por qué sólo un apoyo debe fijar axialmente el eje?</summary><div class="inner"><p>Para permitir la <b>dilatación térmica</b>: si los dos lo fijaran, al calentarse el eje aparecerían fuerzas axiales enormes y los rodamientos se agarrotarían. Un apoyo fija, el otro es libre.</p></div></details><details class="paso"><summary><span class="pn">4</span>Diferencia entre acoplamiento rígido y flexible.</summary><div class="inner"><p>El rígido une los ejes como si fueran uno solo y exige alineación perfecta. El flexible admite pequeñas desalineaciones angulares y axiales y amortigua choques y vibraciones.</p></div></details><details class="paso"><summary><span class="pn">5</span>¿Gira la jaula de un rodamiento a la misma velocidad que el eje?</summary><div class="inner"><p>No: gira a una velocidad intermedia entre la pista interior (la del eje) y la exterior (fija), aproximadamente \(\omega_{jaula}=\omega_{eje}\frac{r_{int}}{r_{int}+r_{ext}}\), algo menos de la mitad.</p></div></details>
+</section>
+<nav class="pager" aria-label="Páginas"><a href="tema-06.html"><small>← Anterior</small>T6 · Transmisiones por correa y cadena</a><a class="nx" href="tema-08.html"><small>Siguiente →</small>T8 · Sistemas leva-seguidor</a></nav>
+<p class="inicio" style="margin:36px 0 8px;text-align:center;font-size:13px;color:var(--muted)">Guía no oficial de Mecánica de Máquinas (UPCT, GIEyA) · Datos tomados del curso <time datetime="2022-09">2022/23</time> (guiones de teoría, prácticas y exámenes de 2021 a 2023) · página creada en noviembre de 2026</p>
+</main>
+</div>
+<script src="app.js"></script>
+<script src="sims.js"></script>
+</body>
+</html>
