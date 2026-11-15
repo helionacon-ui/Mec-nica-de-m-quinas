@@ -589,5 +589,43 @@ SIMS.leva=el=>build(el,{w:660,h:450,
   v<sub>max</sub> = <b>${NQ(vmax)} m/s</b> · a<sub>max</sub> = <b>${isFinite(amax)?NQ(amax)+' m/s²':'∞'}</b> · ${cont}.<br>
   <span class="hint">Compara las cuatro curvas mirando la fila de la aceleración: la parabólica tiene el máximo más bajo, pero sólo la cicloidal llega a cero en los extremos. Por eso es la que se usa junto a detenciones.</span>`);}});
 
+/* ---- Tren de engranajes de dos etapas, paso a paso: i = z₂/z₁, n = n₁/i, M = M₁·i ---- */
+SIMS.trenPaso=el=>build(el,{w:660,h:400,
+ sliders:[{k:'paso',v:0,min:0,max:6,step:1,l:'paso de la resolución (0 = problema)',u:''}],
+ draw(a){a.clear();const p=a.st.paso;
+  // radios: 1 diente ≈ 2 px de paso; el número de dientes de cada rueda se marca con trazos
+  const G=[{x:90,y:130,z:20,r:28,c:C.f,lab:'z₁ = 20'},
+           {x:202,y:130,z:60,r:84,c:C.b,lab:'z₂ = 60'},
+           {x:360,y:130,z:15,r:21,c:C.b,lab:'z₃ = 15'},
+           {x:444,y:130,z:45,r:63,c:C.c,lab:'z₄ = 45'}];
+  G.forEach(g=>{
+    a.g.strokeStyle=g.c;a.g.lineWidth=1.5;a.g.beginPath();a.g.arc(g.x,g.y,g.r,0,2*Math.PI);a.g.stroke();
+    for(let k=0;k<g.z;k++){const t=2*Math.PI*k/g.z;
+      a.line(g.x+(g.r-3)*Math.cos(t),g.y+(g.r-3)*Math.sin(t),g.x+(g.r+3)*Math.cos(t),g.y+(g.r+3)*Math.sin(t),g.c,2);}
+    a.circ(g.x,g.y,3,C.text,true);
+    a.txt(g.lab,g.x,g.y+g.r+16,g.c,12,'center');
+  });
+  a.txt('etapa 1',146,34,C.muted,12,'center');
+  a.txt('etapa 2',404,34,C.muted,12,'center');
+  a.line(202,130,360,130,C.muted,1);  // unión esquemática: z₂ y z₃ van en el mismo eje
+  // cálculo
+  a.txt('Motor: n₁ = 1800 rpm, M₁ = 30 N·m (ideal, sin pérdidas)',40,270,C.muted,12,'left');
+  if(p>=1)a.txt('Etapa 1: i₁₂ = z₂/z₁ = 60/20 = 3',40,296,C.f,13,'left');
+  if(p>=2)a.txt('Eje intermedio: n₂ = n₁/i₁₂ = 1800/3 = 600 rpm (z₃ gira igual que z₂)',40,318,C.text,12,'left');
+  if(p>=3)a.txt('Etapa 2: i₃₄ = z₄/z₃ = 45/15 = 3',40,340,C.c,13,'left');
+  if(p>=4)a.txt('Salida: n₄ = n₃/i₃₄ = 600/3 = 200 rpm   (i total = 9)',40,362,C.c,13,'left');
+  if(p>=5)a.txt('Par: M₄ = M₁ · i = 30 · 9 = 270 N·m',40,386,C.a,13,'left');
+  const T=[
+   'Tren de engranajes de dos etapas. El motor gira a n₁ = 1800 rpm con un par M₁ = 30 N·m. Las ruedas tienen z₁ = 20, z₂ = 60, z₃ = 15 y z₄ = 45 dientes. Se piden la velocidad y el par de salida, sin pérdidas.',
+   'Cada engrane exterior de la primera etapa tiene una relación de transmisión i = z_conducida/z_conductora. Aquí i₁₂ = 60/20 = 3: la rueda grande gira tres veces más despacio. Los dientes marcados en cada rueda tienen el mismo paso, así que el número de dientes da la relación.',
+   'z₂ y z₃ están sobre el mismo eje intermedio (en el dibujo, unidos por la línea gris), así que giran igual. La velocidad del eje intermedio es n₂ = n₁/i₁₂ = 1800/3 = 600 rpm.',
+   'La segunda etapa usa z₃ como rueda conductora y z₄ como conducida: i₃₄ = 45/15 = 3. Las relaciones se multiplican porque las etapas están en serie.',
+   'Velocidad de salida: n₄ = n₃/i₃₄ = 600/3 = 200 rpm. La relación total es i = 3 · 3 = 9, y la velocidad final es 1800/9 = 200 rpm.',
+   'Par de salida: sin pérdidas, la potencia se conserva, así que el par se multiplica por la relación: M₄ = M₁ · i = 30 · 9 = 270 N·m. Reducir velocidad aumenta el par en la misma proporción.',
+   'Comprobación: P₁ = ω₁M₁ = 188,5 rad/s · 30 N·m ≈ 5,65 kW, y P₄ = ω₄M₄ = 20,9 rad/s · 270 N·m ≈ 5,65 kW. El eje de salida gira en el mismo sentido que el de entrada, porque cada engrane exterior invierte el sentido y hay dos. Con rendimiento real, el par sería algo menor.'
+  ];
+  a.html(`<div>${T[p]}</div>`);
+ }});
+
 document.querySelectorAll('[data-sim]').forEach(el=>{const f=SIMS[el.dataset.sim];if(f)f(el);});
 })();
