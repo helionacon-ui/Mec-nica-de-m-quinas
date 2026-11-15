@@ -627,5 +627,31 @@ SIMS.trenPaso=el=>build(el,{w:660,h:400,
   a.html(`<div>${T[p]}</div>`);
  }});
 
+
+
+
+
+
+
+
+/* ---- paso a paso declarativo ---- */
+SIMS.__paso=(el,D)=>build(el,{w:D.w||660,h:D.h||340,
+ sliders:[{k:'paso',v:0,min:0,max:D.steps.length,step:1,l:'paso de la resolución (0 = enunciado)',u:''}],
+ draw(a){a.clear();const g=a.g,p=a.st.paso;
+  const it=(x,col)=>{const k=x[0];
+   if(k==='t')a.txt(x[1],x[2],x[3],col,x[4]||13,x[5]||'left');
+   else if(k==='l')a.line(x[1],x[2],x[3],x[4],col,x[5]||1.5,x[6]);
+   else if(k==='a')a.arrow(x[1],x[2],x[3],x[4],col,x[5]);
+   else if(k==='c')a.circ(x[1],x[2],x[3],col,!!x[4]);
+   else if(k==='r'){g.strokeStyle=col;g.lineWidth=1.8;if(x[5]){g.fillStyle=col;g.globalAlpha=.18;g.fillRect(x[1],x[2],x[3],x[4]);g.globalAlpha=1;}g.strokeRect(x[1],x[2],x[3],x[4]);}
+   else if(k==='p'){g.strokeStyle=col;g.lineWidth=x[2]||2;g.beginPath();x[1].forEach((q,i)=>i?g.lineTo(q[0],q[1]):g.moveTo(q[0],q[1]));g.stroke();}};
+  (D.base||[]).forEach(x=>it(x,C.muted));
+  D.steps.forEach((s,i)=>{if(i+1>p)return;const cur=(i+1===p);(s.add||[]).forEach(x=>it(x,cur?C.d:C.text));if(cur)(s.now||[]).forEach(x=>it(x,C.d));});
+  a.html('<div>'+(p===0?D.q:D.steps[p-1].text)+'</div>');}});
+/* ---- fin paso a paso declarativo ---- */
+
+/* ---- paso2 volantePaso ---- */
+SIMS.volantePaso=el=>SIMS.__paso(el,{"w":620,"h":270,"q":"¿Qué momento de inercia debe tener un volante para limitar la fluctuación de velocidad al 5 % con una variación de energía de 500 J a 955 rpm? Sube el paso.","base":[["t","ΔE = 500 J · n = 955 rpm · C_s = 0,05",30,26,13,"left"]],"steps":[{"text":"Una máquina absorbe y devuelve energía de forma cíclica: la <b>variación máxima de energía cinética</b> en un ciclo es ΔE = 500 J. Se quiere un volante que mantenga la velocidad dentro de un <b>5 %</b> (C<sub>s</sub> = 0,05) a n = 955 rpm.","add":[]},{"text":"Velocidad angular media: <b>ω = 2πn/60 = 2π·955/60 ≈ 100 rad/s</b>.","add":[["t","ω = 2π·955/60 ≈ 100 rad/s",40,70,15,"left"]]},{"text":"La fluctuación de energía del volante cumple <b>ΔE = I·ω²·C<sub>s</sub></b>, donde C<sub>s</sub> = (ω<sub>máx</sub> − ω<sub>mín</sub>)/ω<sub>med</sub> es el coeficiente de fluctuación de velocidad.","add":[["t","ΔE = I · ω² · C_s",40,110,16,"left"]]},{"text":"Se despeja la inercia: <b>I = ΔE/(ω²C<sub>s</sub>) = 500/(100²·0,05) = 500/500 = 1 kg·m²</b>.","add":[["t","I = 500/(100² · 0,05) = 1 kg·m²",40,150,16,"left"]]},{"text":"Un volante de disco macizo de radio R = 0,15 m tiene I = ½mR²: <b>m = 2I/R² = 2·1/0,15² ≈ 88,9 kg</b>. Es un disco de unos 89 kg: pesado pero realizable.","add":[["t","m = 2I/R² = 88,9 kg (R = 0,15 m)",40,190,15,"left"]]},{"text":"Un volante más ligero con la misma inercia se consigue con una <b>llanta</b> (masa concentrada en el radio exterior): I = mR² da m = 1/0,15² ≈ 44,4 kg, la mitad. Por eso los volantes reales tienen la masa en la periferia.","add":[["t","llanta: m = I/R² = 44,4 kg",40,230,15,"left"]]}]});
+/* ---- fin paso2 volantePaso ---- */
 document.querySelectorAll('[data-sim]').forEach(el=>{const f=SIMS[el.dataset.sim];if(f)f(el);});
 })();
