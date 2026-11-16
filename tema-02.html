@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -46,25 +86,25 @@ details>summary{line-height:1.7;padding-block:.5em}
 <main>
 <section class="sec tema" style="--tc:var(--c3);--tcs:var(--c3s)">
 <div class="sh"><span aria-hidden="true" class="badge">2</span><div class="shx"><p class="kick">Fundamentos · Tema 2</p><h2 id="t2">Análisis cinemático de mecanismos planos</h2><div class="tags"><span class="tag">Fundamentos</span><span class="tag">1.er parcial</span></div></div></div>
-<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> Calcular velocidades y aceleraciones de los eslabones de un mecanismo plano por el método vectorial y por centros instantáneos de rotación, incluida la aceleración de Coriolis.</p><p>Conocida la entrada (normalmente \(\omega_2\) de la manivela), se trata de obtener velocidades y aceleraciones del resto de eslabones. Hay dos caminos y en el examen se pide a menudo <b>los dos</b>:</p>
-<p><b>1. Método vectorial (puntos de un mismo eslabón).</b> Para dos puntos A y B de un sólido rígido:</p>
+<div class="zero"><p class="ft">Desde cero</p><p class="obj"><b>Objetivo:</b> Calcular velocidades y aceleraciones de los eslabones de un mecanismo plano por el método vectorial y por centros instantáneos de rotación, incluida la aceleración de Coriolis.</p><p class="lede">Conocida la entrada (normalmente \(\omega_2\) de la manivela), se trata de obtener velocidades y aceleraciones del resto de eslabones. Hay dos caminos y en el examen se pide a menudo <b>los dos</b>:</p>
+<p class="run"><b>1. Método vectorial (puntos de un mismo eslabón).:</b> Para dos puntos A y B de un sólido rígido:</p>
 <p>\(\vec v_B=\vec v_A+\vec\omega\times\vec r_{BA}\) y \(\vec a_B=\vec a_A+\vec\alpha\times\vec r_{BA}-\omega^2\vec r_{BA}\).</p>
 <p>El término \(-\omega^2\vec r_{BA}\) es la <b>aceleración normal</b> (apunta siempre de B hacia A) y \(\vec\alpha\times\vec r_{BA}\) la <b>tangencial</b>.</p>
-<p><b>2. Centros instantáneos de rotación (CIR).</b> El CIR de dos eslabones es el punto de velocidad relativa nula entre ellos. Un mecanismo de \(n\) eslabones tiene \(N=\dfrac{n(n-1)}{2}\) CIR. Los evidentes son los de los pares (una rotación da el CIR en su eje; una traslación, en el infinito perpendicular al deslizamiento) y los demás salen del <b>teorema de Kennedy-Aronhold</b>: los tres CIR de tres eslabones cualesquiera están <b>alineados</b>.</p>
-<p><b>3. Movimiento relativo con guía móvil (Coriolis).</b> Cuando un punto se mueve <i>sobre</i> otro eslabón que a su vez gira (corredera sobre balancín), hay que descomponer en <b>arrastre</b> + <b>relativo</b>, y aparece la aceleración de Coriolis \(2\vec\omega_{arr}\times\vec v_{rel}\), que es el término que más se olvida.</p>
+<p class="run"><b>2. Centros instantáneos de rotación (CIR).:</b> El CIR de dos eslabones es el punto de velocidad relativa nula entre ellos. Un mecanismo de \(n\) eslabones tiene \(N=\dfrac{n(n-1)}{2}\) CIR. Los evidentes son los de los pares (una rotación da el CIR en su eje; una traslación, en el infinito perpendicular al deslizamiento) y los demás salen del <b>teorema de Kennedy-Aronhold</b>: los tres CIR de tres eslabones cualesquiera están <b>alineados</b>.</p>
+<p class="run"><b>3. Movimiento relativo con guía móvil (Coriolis).:</b> Cuando un punto se mueve <i>sobre</i> otro eslabón que a su vez gira (corredera sobre balancín), hay que descomponer en <b>arrastre</b> + <b>relativo</b>, y aparece la aceleración de Coriolis \(2\vec\omega_{arr}\times\vec v_{rel}\), que es el término que más se olvida.</p>
 <p>El <b>eje instantáneo de rotación y mínimo deslizamiento</b> y las <b>axoides</b> (fija y móvil) son la versión espacial de la misma idea: la axoide móvil rueda sin deslizar sobre la fija.</p></div>
 <!--ill--><div class="ill-wrap"><h3 class="ill-h" style="margin:22px 0 4px">En imágenes</h3><figure class="ill"><div class="ill-t">Cada instante, un movimiento plano es un giro puro</div><svg viewBox="0 0 560 262" role="img" aria-label="Centro instantáneo de rotación" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><line x1="43" y1="196" x2="77" y2="196" stroke="var(--fg)" stroke-width="2.6" opacity="1" stroke-linecap="round"/><line x1="43" y1="196" x2="37" y2="204" stroke="var(--muted)" stroke-width="1.4" opacity="1" stroke-linecap="round"/><line x1="51.5" y1="196" x2="45.5" y2="204" stroke="var(--muted)" stroke-width="1.4" opacity="1" stroke-linecap="round"/><line x1="60" y1="196" x2="54" y2="204" stroke="var(--muted)" stroke-width="1.4" opacity="1" stroke-linecap="round"/><line x1="68.5" y1="196" x2="62.5" y2="204" stroke="var(--muted)" stroke-width="1.4" opacity="1" stroke-linecap="round"/><line x1="77" y1="196" x2="71" y2="204" stroke="var(--muted)" stroke-width="1.4" opacity="1" stroke-linecap="round"/><line x1="60" y1="190" x2="230" y2="190" stroke="var(--muted)" stroke-width="2" stroke-dasharray="5 3" opacity="1" stroke-linecap="round"/><line x1="60" y1="190" x2="120" y2="150" stroke="var(--tc,var(--accent))" stroke-width="4" opacity="1" stroke-linecap="round"/><line x1="120" y1="150" x2="200" y2="190" stroke="var(--c5,#c43d63)" stroke-width="4" opacity="1" stroke-linecap="round"/><rect x="184" y="181" width="32" height="18" rx="0" fill="var(--c6,#2c8a52)" stroke="var(--c6,#2c8a52)" stroke-width="2" opacity="0.3"/><circle cx="60" cy="190" r="5" fill="var(--surface,#fff)" stroke="var(--fg)" stroke-width="2.2" opacity="1"/><circle cx="120" cy="150" r="5" fill="var(--surface,#fff)" stroke="var(--fg)" stroke-width="2.2" opacity="1"/><circle cx="200" cy="190" r="5" fill="var(--surface,#fff)" stroke="var(--fg)" stroke-width="2.2" opacity="1"/><line x1="60" y1="190" x2="200" y2="96.7" stroke="var(--muted)" stroke-width="1.2" stroke-dasharray="4 3" opacity="1" stroke-linecap="round"/><line x1="200" y1="190" x2="200" y2="96.7" stroke="var(--muted)" stroke-width="1.2" stroke-dasharray="4 3" opacity="1" stroke-linecap="round"/><circle cx="200" cy="96.7" r="5" fill="var(--warn,#b8730c)" stroke="none" stroke-width="1.8" opacity="1"/><text x="210" y="92.7" fill="var(--warn,#b8730c)" font-size="12" text-anchor="start" font-weight="700" opacity="1">I₂₃</text><line x1="120" y1="150" x2="102.3" y2="123.5" stroke="var(--warn,#b8730c)" stroke-width="2.6" opacity="1" stroke-linecap="round"/><polygon points="97.8,116.7 105.4,121.5 99.3,125.6" fill="var(--warn,#b8730c)"/><text x="156" y="136" fill="var(--warn,#b8730c)" font-size="12" text-anchor="start" font-weight="700" opacity="1">v_A</text><text x="318" y="56" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">El CIR es el punto de</text><text x="318" y="78" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">velocidad nula del</text><text x="318" y="100" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">cuerpo en ese instante.</text><text x="318" y="133" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">Se halla cortando las</text><text x="318" y="155" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">perpendiculares a las</text><text x="318" y="177" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">velocidades.</text><text x="318" y="210" fill="var(--warn,#b8730c)" font-size="13.5" text-anchor="start" font-weight="700" opacity="1">v = ω · distancia al CIR</text></svg><figcaption>Si se conocen las direcciones de dos velocidades, el CIR está en el cruce de las perpendiculares y las velocidades salen de v = ω·d.</figcaption></figure><figure class="ill"><div class="ill-t">Suma vectorial de velocidades en un sólido rígido</div><svg viewBox="0 0 560 262" role="img" aria-label="Velocidad relativa" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><line x1="60" y1="170" x2="120" y2="100" stroke="var(--tc,var(--accent))" stroke-width="3.5" opacity="1" stroke-linecap="round"/><circle cx="60" cy="170" r="5" fill="var(--surface,#fff)" stroke="var(--fg)" stroke-width="2.2" opacity="1"/><circle cx="120" cy="100" r="5" fill="var(--surface,#fff)" stroke="var(--fg)" stroke-width="2.2" opacity="1"/><line x1="43" y1="176" x2="77" y2="176" stroke="var(--fg)" stroke-width="2.6" opacity="1" stroke-linecap="round"/><line x1="43" y1="176" x2="37" y2="184" stroke="var(--muted)" stroke-width="1.4" opacity="1" stroke-linecap="round"/><line x1="51.5" y1="176" x2="45.5" y2="184" stroke="var(--muted)" stroke-width="1.4" opacity="1" stroke-linecap="round"/><line x1="60" y1="176" x2="54" y2="184" stroke="var(--muted)" stroke-width="1.4" opacity="1" stroke-linecap="round"/><line x1="68.5" y1="176" x2="62.5" y2="184" stroke="var(--muted)" stroke-width="1.4" opacity="1" stroke-linecap="round"/><line x1="77" y1="176" x2="71" y2="184" stroke="var(--muted)" stroke-width="1.4" opacity="1" stroke-linecap="round"/><text x="52" y="162" fill="var(--fg)" font-size="12" text-anchor="end" font-weight="700" opacity="1">O</text><text x="112" y="92" fill="var(--fg)" font-size="12" text-anchor="end" font-weight="700" opacity="1">A</text><line x1="190" y1="180" x2="253.2" y2="125.9" stroke="var(--warn,#b8730c)" stroke-width="2.8" opacity="1" stroke-linecap="round"/><polygon points="260,120 255.7,129 250.4,122.8" fill="var(--warn,#b8730c)"/><text x="220" y="134" fill="var(--warn,#b8730c)" font-size="12.5" text-anchor="end" font-weight="700" opacity="1">v_A</text><line x1="260" y1="120" x2="293.1" y2="148.2" stroke="var(--c5,#c43d63)" stroke-width="2.8" opacity="1" stroke-linecap="round"/><polygon points="300,154 290.4,151.2 295.7,145" fill="var(--c5,#c43d63)"/><text x="290" y="126" fill="var(--c5,#c43d63)" font-size="12.5" text-anchor="middle" font-weight="700" opacity="1">v_B/A</text><line x1="190" y1="180" x2="291.2" y2="156.1" stroke="var(--c6,#2c8a52)" stroke-width="3" opacity="1" stroke-linecap="round"/><polygon points="300,154 292.1,160.1 290.2,152.1" fill="var(--c6,#2c8a52)"/><text x="244" y="186" fill="var(--c6,#2c8a52)" font-size="12.5" text-anchor="middle" font-weight="700" opacity="1">v_B</text><text x="24" y="226" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">v_B = v_A + ω × r_B/A</text><text x="24" y="246" fill="var(--fg)" font-size="12.5" text-anchor="start" font-weight="600" opacity="1">se resuelve como un triángulo de velocidades</text></svg><figcaption>La velocidad de un punto es la de otro punto del mismo sólido más la velocidad relativa de giro, perpendicular a la barra que los une.</figcaption></figure></div><!--/ill--><details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 2 <span class="src">8 símbolos</span></summary><div class="inner">
 <div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">ω</td><td>Velocidad angular</td><td class="u">rad/s</td></tr><tr><td class="sym">α</td><td>Aceleración angular</td><td class="u">rad/s²</td></tr><tr><td class="sym">v_BA</td><td>ω·AB</td><td class="u">⊥ a AB</td></tr><tr><td class="sym">aⁿ</td><td>ω²·r</td><td class="u">hacia el centro</td></tr><tr><td class="sym">aᵗ</td><td>α·r</td><td class="u">⊥ al radio</td></tr><tr><td class="sym">CIR</td><td>Centro instantáneo de rotación</td><td class="u">n(n−1)/2 en total</td></tr><tr><td class="sym">Kennedy</td><td>Tres CIR alineados</td><td class="u"></td></tr><tr><td class="sym">Coriolis</td><td>2·ω×v_rel</td><td class="u">guía móvil</td></tr></table></div></div></details>
 <figure class="fig"><p class="ft">Figura interactiva - velocidades, aceleraciones y centro instantaneo</p><div data-sim="cinematica"></div><figcaption>Mueve los controles y lee el recuadro: la figura calcula lo mismo que tú harías a mano en el examen.</figcaption></figure>
-<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Dos formas de hallar velocidades: vectores y CIR</p><p><b>Vectorial</b>: en un mismo eslabón rígido, \(\vec v_B=\vec v_A+\vec\omega\times\vec r_{BA}\): la velocidad de B es la de A más un giro alrededor de A, perpendicular a AB. Se escribe como ecuación vectorial (2 ecuaciones) y se resuelve con las dos incógnitas (dos módulos). <b>CIR</b> (centro instantáneo de rotación): en cada instante el eslabón gira alrededor de un punto fijo (el CIR); la velocidad de cualquier punto es \(\omega\cdot d\) (distancia al CIR), perpendicular al radio. El CIR de un eslabón está en la intersección de las perpendiculares a las velocidades de dos de sus puntos. Es muy rápido para velocidades, pero no sirve para aceleraciones.</p><p class="ft">Aceleraciones: normal, tangencial y Coriolis</p><p>La aceleración relativa de B respecto a A (en el mismo eslabón) tiene dos componentes: una <b>normal</b> \(\omega^2\overline{AB}\) dirigida hacia A (siempre se conoce si ya tienes \(\omega\)) y una <b>tangencial</b> \(\alpha\overline{AB}\), perpendicular, con \(\alpha\) desconocida. Estrategia: calcula primero todas las normales y deja las tangenciales como incógnitas. Si un punto <b>desliza sobre un eslabón que gira</b>, aparece la aceleración de <b>Coriolis</b> \(2\vec\omega\times\vec v_{rel}\), perpendicular a la velocidad relativa; olvidarla es el error más habitual del examen.</p></div><!--/amp1--><!--deep--><h3 id="t2-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
-<h4>1. Qué se busca</h4>
+<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Dos formas de hallar velocidades: vectores y CIR</p><p class="run"><b>Vectorial:</b> en un mismo eslabón rígido, \(\vec v_B=\vec v_A+\vec\omega\times\vec r_{BA}\): la velocidad de B es la de A más un giro alrededor de A, perpendicular a AB. Se escribe como ecuación vectorial (2 ecuaciones) y se resuelve con las dos incógnitas (dos módulos). <b>CIR</b> (centro instantáneo de rotación): en cada instante el eslabón gira alrededor de un punto fijo (el CIR); la velocidad de cualquier punto es \(\omega\cdot d\) (distancia al CIR), perpendicular al radio. El CIR de un eslabón está en la intersección de las perpendiculares a las velocidades de dos de sus puntos. Es muy rápido para velocidades, pero no sirve para aceleraciones.</p><p class="ft">Aceleraciones: normal, tangencial y Coriolis</p><p class="lede">La aceleración relativa de B respecto a A (en el mismo eslabón) tiene dos componentes: una <b>normal</b> \(\omega^2\overline{AB}\) dirigida hacia A (siempre se conoce si ya tienes \(\omega\)) y una <b>tangencial</b> \(\alpha\overline{AB}\), perpendicular, con \(\alpha\) desconocida. Estrategia: calcula primero todas las normales y deja las tangenciales como incógnitas. Si un punto <b>desliza sobre un eslabón que gira</b>, aparece la aceleración de <b>Coriolis</b> \(2\vec\omega\times\vec v_{rel}\), perpendicular a la velocidad relativa; olvidarla es el error más habitual del examen.</p></div><!--/amp1--><!--deep--><h3 id="t2-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
+<h4><span class="hn">1</span>Qué se busca</h4>
 <div class="box key deepnote"><b>Idea clave.</b> dada la posición y la velocidad de la <b>entrada</b>, hallar la velocidad y la aceleración de <b>cualquier punto</b> del mecanismo.</div>
-<h4>2. Velocidades: movimiento relativo</h4>
+<h4><span class="hn">2</span>Velocidades: movimiento relativo</h4>
 <div class="eqd">\[\vec v_B=\vec v_A+\vec\omega\times\overrightarrow{AB}\qquad|\vec v_{B/A}|=\omega\,AB,\ \perp AB\]</div>
 <ol class="pasos"><li>Empieza por el punto del que conoces la velocidad (el de la manivela: \(v=\omega r\)).</li><li>Escribe \(\vec v_B=\vec v_A+\vec v_{B/A}\), con \(\vec v_{B/A}\) <b>perpendicular</b> a \(AB\).</li><li>Dibuja el <b>polígono de velocidades</b>: una dirección conocida desde cada extremo; su corte da el resultado.</li><li>La velocidad angular de la biela es \(\omega=v_{B/A}/AB\).</li></ol>
 <div class="box trap deepnote"><b>Cuidado.</b> Sentido de giro: hay que respetar el sentido de \(\vec\omega\) al decidir hacia dónde apunta \(\vec v_{B/A}\).</div>
 <details class="dem"><summary><span class="pn">∴</span>Centro instantáneo de rotación (CIR)</summary><div class="inner"><ul><li>En cada instante, un cuerpo plano gira como si lo hiciera alrededor de un punto: el <b>CIR</b>.</li><li>Se halla en la <b>intersección de las perpendiculares</b> a las velocidades de dos puntos.</li><li>Después \(v=\omega\,d\), con \(d\) la distancia al CIR.</li><li><b>Teorema de Aronhold-Kennedy:</b> tres cuerpos en movimiento relativo tienen sus tres CIR <b>alineados</b>.</li></ul></div></details>
-<h4>3. Aceleraciones</h4>
+<h4><span class="hn">3</span>Aceleraciones</h4>
 <div class="eqd">\[\vec a_B=\vec a_A+\underbrace{\vec\alpha\times\overrightarrow{AB}}_{\text{tangencial}}-\underbrace{\omega^2\,\overrightarrow{AB}}_{\text{normal, hacia }A}\]</div>
 <ul><li>La componente <b>normal</b> apunta hacia \(A\) y vale \(\omega^2\,AB\).</li><li>La <b>tangencial</b> es perpendicular a \(AB\) y vale \(\alpha\,AB\).</li><li>En un punto que se mueve sobre un cuerpo que gira aparece además la aceleración de <b>Coriolis</b>: \(2\,\vec\omega\times\vec v_{rel}\).</li></ul>
 <p>El método es igual que con velocidades: dibuja el <b>polígono de aceleraciones</b>.</p>
